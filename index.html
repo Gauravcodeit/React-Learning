@@ -6,20 +6,31 @@
     <title>Document</title>
 </head>
 <body>
+<div id="root">
 
+</div>
 </body>
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 <script>
-    const body = document.body;
-    const root = document.createElement("div");
-    root.setAttribute("id", "root")
-    body.appendChild(root);
+    /*
+        const body = document.body;
+        const root = document.createElement("div");
+        root.setAttribute("id", "root")
+        body.appendChild(root);
+    */
+
+    const reactElement = React.createElement("h1", {}, "Hello world from react")
+    const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+    reactRoot.render(reactElement);
+
     const parentElement = document.getElementById("root");
     const element = document.createElement("h1");
-    const  textNode =document.createTextNode("Hello World");
+    const  textNode =document.createTextNode("Hello World from javascript");
     element.appendChild(textNode);
     parentElement.appendChild(element);
+
+
 
 </script>
 </html>
