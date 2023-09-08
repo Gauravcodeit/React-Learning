@@ -16,21 +16,32 @@
     /*
         const body = document.body;
         const root = document.createElement("div");
+
         root.setAttribute("id", "root")
         body.appendChild(root);
     */
 
+   /* React DOM Manipulation */
     const reactElement = React.createElement("h1", {}, "Hello world from react")
-    const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
-    reactRoot.render(reactElement);
+    console.log(reactElement);
 
+    const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+    console.log(reactRoot);
+    /* React DOM Manipulation */
+
+    /* js DOM Manipulation */
     const parentElement = document.getElementById("root");
+    console.log(parentElement)
+
     const element = document.createElement("h1");
     const  textNode =document.createTextNode("Hello World from javascript");
+
     element.appendChild(textNode);
+    console.log(element.appendChild(textNode))
+
     parentElement.appendChild(element);
-
-
+    console.log(parentElement.appendChild(element))
+    /* js DOM Manipulation */
 
 </script>
 </html>
