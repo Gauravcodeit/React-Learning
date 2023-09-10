@@ -1,0 +1,23 @@
+{
+  "name": "react-learning",
+  "version": "1.0.0",
+  "description": "it has practical implementation of react concepts",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gauravcodeit/React-Learning.git"
+  },
+  "keywords": [],
+  "author": "Gaurav Adhikari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gauravcodeit/React-Learning/issues"
+  },
+  "homepage": "https://github.com/Gauravcodeit/React-Learning#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
