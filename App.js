@@ -13,5 +13,35 @@ console.log(reactElement);
 // JSX Element
 const jsxelment = <h1 className='parent'>this is an jsx element</h1>;
 console.log(jsxelment);
-root.render(jsxelment);
+
 // JSX Element
+
+const JsxElem = (
+    <div>
+        New multiline JSx Element
+    </div>
+)
+
+// Functional Component - Normal Js Functions that return Jsx Element
+
+const ChildReactFuncComponent = () => (
+    <div className="child-react-componet" >
+        Child Functional Compponent
+    </div>
+)
+const ReactFuncComponent = ()=>{
+    return(
+        <div>
+            <div className="functional-componnet">
+                New React Functional Compoent
+            </div>
+            < ChildReactFuncComponent />
+        </div>
+
+    )
+
+}
+
+console.clear()
+console.log(< ReactFuncComponent />)
+root.render(<ReactFuncComponent />);
