@@ -17,16 +17,23 @@ console.log(jsxelment);
 // JSX Element
 
 const JsxElem = (
-    <div>
+    <span>
         New multiline JSx Element
-    </div>
+    </span>
 )
 
 // Functional Component - Normal Js Functions that return Jsx Element
 
 const ChildReactFuncComponent = () => (
     <div className="child-react-componet" >
-        Child Functional Compponent
+       <span>Child Functional Compponent</span>
+       {JsxElem}
+    </div>
+)
+const ElementContainReactFunc= (
+    <div>
+        <ChildReactFuncComponent />
+        {ChildReactFuncComponent()}
     </div>
 )
 const ReactFuncComponent = ()=>{
@@ -35,11 +42,10 @@ const ReactFuncComponent = ()=>{
             <div className="functional-componnet">
                 New React Functional Compoent
             </div>
-            < ChildReactFuncComponent />
+           {ElementContainReactFunc}
         </div>
 
     )
-
 }
 
 console.clear()
