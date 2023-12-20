@@ -66,11 +66,21 @@ body {
                         padding-block: 10px;
                     }
                 }
-
-
-
             }
-
         }
+    }
+}
+
+.shimmer-card-grp{
+    display: flex;
+    flex-wrap: wrap;
+    margin-block: 30px;
+    gap: 20px;
+    justify-content: space-between;
+    .shimmer-card-wrap{
+        width: 270px;
+        height: 180px;
+        border-radius: 12px;
+        background-color: #ccc;
     }
 }
