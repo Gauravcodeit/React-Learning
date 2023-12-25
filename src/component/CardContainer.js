@@ -4,7 +4,9 @@ import Shimmer from './ShimmerUI';
 import { useEffect, useState } from 'react';
 const CardContainer = function (){
     const [listRestaurant, setListRestaurant] = useState();
-    const [clickedFlag, setclickedFlag] =useState(true)
+    const [filteredRestaurant, setfilteredRestaurant] = useState();
+    const [clickedFlag, setclickedFlag] =useState(true);
+    const [inputValue, setinputValue] = useState("")
 
     useEffect(()=>{
         fetchData()
@@ -14,19 +16,27 @@ const CardContainer = function (){
         const restaurantJson = await restaurants.json();
         const topRestaurant = restaurantJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         setListRestaurant(topRestaurant);
+        setfilteredRestaurant(topRestaurant);
     }
     function topRated(){
-        console.log(listRestaurant.length)
+        setinputValue("")
         clickedFlag ? setclickedFlag(false): setclickedFlag(true);
         let FilteredRestaurant = listRestaurant.filter((res)=>{
-            return (res.info.avgRating > 4.1)
+            return (res.info.avgRating > 4.2)
         })
-        setListRestaurant(FilteredRestaurant)
+        setfilteredRestaurant(FilteredRestaurant)
         console.log(FilteredRestaurant)
     }
     function allRestaurant(){
-        setListRestaurant(restaurant)
+        setinputValue("")
+        setfilteredRestaurant(listRestaurant)
         clickedFlag ? setclickedFlag(false): setclickedFlag(true);
+    }
+    function SearchedList(){
+        let filteredList =  listRestaurant.filter((res)=>{
+            return (res.info.name.toLowerCase().includes(inputValue.toLowerCase()))
+        })
+        setfilteredRestaurant(filteredList)
     }
     if (!listRestaurant?.length){
         return(
@@ -35,16 +45,24 @@ const CardContainer = function (){
             </>
         )
     }
+
     return (
         <>
+
         <div className='filter-sort '>
            <button className='top-rated-btn' type='button' onClick={ clickedFlag ? topRated : allRestaurant}>
                 { clickedFlag ? "Top Rated Restaurant" :"All Restaurant"}
             </button>
+            <div className='search-wrap'>
+                <input type='search' name='search' onChange={(e)=>{setinputValue(e.target.value)}} value={inputValue} />
+                <button type='button' onClick={SearchedList}>
+                    Search
+                </button>
+            </div>
         </div>
          <div className="card-grp">
             {
-                listRestaurant?.map((item, index)=>{
+                filteredRestaurant?.map((item, index)=>{
                     return(
                         <Card
                         image_url={ item?.info?.cloudinaryImageId }
