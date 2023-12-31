@@ -14,9 +14,11 @@ const CardContainer = function (){
     async function fetchData(){
         const restaurants = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.630251&lng=77.3463139&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING') ;
         const restaurantJson = await restaurants.json();
-        const topRestaurant = restaurantJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        const topRestaurant = restaurantJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        console.log(restaurantJson)
         setListRestaurant(topRestaurant);
         setfilteredRestaurant(topRestaurant);
+        console.log(filteredRestaurant)
     }
     function topRated(){
         setinputValue("")
@@ -25,7 +27,7 @@ const CardContainer = function (){
             return (res.info.avgRating > 4.2)
         })
         setfilteredRestaurant(FilteredRestaurant)
-        console.log(FilteredRestaurant)
+
     }
     function allRestaurant(){
         setinputValue("")
