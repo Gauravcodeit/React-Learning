@@ -3,7 +3,7 @@ import ReactDOM  from "react-dom/client";
 
 import Header from "./component/Header";
 import Footer from "./component/Footer";
-import CardContainer from "./component/CardContainer";
+import { Home } from "./component/Home";
 import { About } from "./component/About";
 import { ErrorPage } from "./component/ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -16,10 +16,7 @@ const AppLayout = ()=>{
     return (
         <div className="app-layout">
             <Header />
-
-            <div className="container">
-                <CardContainer />
-            </div>
+                <RouterProvider router={router} />
             <Footer />
         </div>
     )
@@ -27,7 +24,7 @@ const AppLayout = ()=>{
 const router = createBrowserRouter([
     {
         path: '/',
-        element : <AppLayout/>,
+        element :<Home /> ,
         errorElement : <ErrorPage />
     },
     {
@@ -38,4 +35,4 @@ const router = createBrowserRouter([
 
 ])
 
-root.render(<RouterProvider router={router} />);
+root.render(<AppLayout/>);
