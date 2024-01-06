@@ -42,13 +42,13 @@ const CardContainer = function (){
         })
         setfilteredRestaurant(filteredList)
     }
-    // if (!listRestaurant?.length){
-    //     return(
-    //         <>
-    //         <Shimmer />
-    //         </>
-    //     )
-    // }
+    if (!listRestaurant?.length){
+        return(
+            <>
+            <Shimmer />
+            </>
+        )
+    }
 
     return (
         <>
