@@ -3,21 +3,41 @@ import ReactDOM  from "react-dom/client";
 
 import Header from "./component/Header";
 import Footer from "./component/Footer";
-import CardContainer from "./component/CardContainer";
+import { Home } from "./component/Home";
+import { About } from "./component/About";
+import { ErrorPage } from "./component/ErrorPage";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 
 const AppLayout = ()=>{
     return (
         <div className="app-layout">
             <Header />
-            <div className="container">
-                <CardContainer />
-            </div>
+                <Outlet />
             <Footer />
         </div>
     )
 }
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element :<AppLayout /> ,
+        errorElement : <ErrorPage />,
+        children :[
+            {
+                path: '/',
+                element : <Home />
+            },
+            {
+                path: '/about',
+                element : <About />
+            },
+        ]
+    },
 
-root.render(<AppLayout />);
+
+
+])
+
+root.render(<RouterProvider router={router} />);
