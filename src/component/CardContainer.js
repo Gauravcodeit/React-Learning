@@ -2,6 +2,8 @@
 import Card from './Card';
 import Shimmer from './ShimmerUI';
 import { useEffect, useState } from 'react';
+import { swiggyTopRestrauntAPI } from '../Util/Constant';
+import { Link } from 'react-router-dom';
 const CardContainer = function (){
     const [listRestaurant, setListRestaurant] = useState();
     const [filteredRestaurant, setfilteredRestaurant] = useState();
@@ -12,9 +14,7 @@ const CardContainer = function (){
         fetchData()
     }, [])
     async function fetchData(){
-        //const restaurants = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.630251&lng=77.3463139&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING') ;
-        // cors policy bypass - https://corsproxy.org/
-        const swiggyTopRestrauntAPI =  'https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.630251&lng=77.3463139&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
+
         const url = 'https://corsproxy.org/?' + encodeURIComponent(swiggyTopRestrauntAPI);
         const restaurants = await fetch(url) ;
         const restaurantJson = await restaurants.json();
@@ -70,12 +70,15 @@ const CardContainer = function (){
             {
                 filteredRestaurant?.map((item, index)=>{
                     return(
+                        <Link to={'restraunts/' + item?.info?.id} key={item?.info?.id}>
                         <Card
-                        image_url={ item?.info?.cloudinaryImageId }
-                        key={item?.info?.id}
-                        title ={item?.info?.name}
-                        cuisines ={item?.info?.cuisines}
+                            image_url={ item?.info?.cloudinaryImageId }
+
+                            title ={item?.info?.name}
+                            cuisines ={item?.info?.cuisines}
                         />
+                        </Link>
+
                     )
                 })
             }

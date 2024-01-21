@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { BrandLogo } from "../Util/Constant";
 const  Header = ()=>{
     return (
         <div className="header">
             <div className="logo">
                <Link to={'/'} >
                <img
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvgLVahkYFXMGyjUvABC6Bc6FehIiXqI760Q&usqp=CAU"
+               src={ BrandLogo }
                alt="logo" />
                </Link>
             </div>
