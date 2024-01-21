@@ -7,6 +7,7 @@ import { Home } from "./component/Home";
 import { About } from "./component/About";
 import { ErrorPage } from "./component/ErrorPage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import RestrauntDetailPage from "./component/RestrauntDetailPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 path: '/about',
                 element : <About />
             },
+            {
+                path: 'restraunts/:rstID',
+                element : <RestrauntDetailPage />
+            }
         ]
     },
 
