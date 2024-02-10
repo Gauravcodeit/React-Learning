@@ -84,3 +84,58 @@ body {
         background-color: #ccc;
     }
 }
+.rest-main-detail{
+    max-width: 800px;
+    margin: 20px auto;
+    width: 100%;
+    .res-detail-rating-card {
+        border: 1px solid #e9e9eb;
+        box-shadow: 0 1px 5px #f9f9f9;
+        border-radius: 6px;
+        text-align: center;
+        padding: 8px;
+        max-width: 100px;
+        height: fit-content;
+    }
+    .image-star-group {
+        color: #3d9b6d;
+        padding-block: 10px 15px;
+        border-bottom: 1px solid #e9e9eb;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+        img{
+            width: 16px;
+        }
+
+    }
+    .total-rating {
+        font-size: 11px;
+        color: #8b8d97;
+        font-weight: 600;
+        padding-block: 10px 5px;
+    }
+    h1.res-detail-name {
+        font-size: 1.43rem;
+        font-weight: 600;
+        color: #282c3f;
+        margin-bottom: 8px;
+        text-transform: capitalize;
+    }
+    .rest-mini-detail-wrap {
+        padding-block: 20px;
+        border-bottom: 1px dashed #7e808c;
+    }
+
+}
+.res-cuisine-rating-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.footer {
+    background-color: #f1f1f6;
+    padding: 35px;
+}
