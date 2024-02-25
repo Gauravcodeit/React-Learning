@@ -15,7 +15,7 @@ const RestrauntDetailPage =()=>{
         const restrauntDetail = await fetch(corsfreeApi);
         const restaurantDetailJson = await restrauntDetail.json();
         console.log(restaurantDetailJson);
-            setMenuList(restaurantDetailJson?.data);
+        setMenuList(restaurantDetailJson.data);
         console.log(menuList);
     }
     if (menuList === null ){
@@ -28,7 +28,7 @@ const RestrauntDetailPage =()=>{
     return(
     <>
         <div className="rest-main-detail">
-           <RestrauntMiniDetailCard cardOne = {menuList?.cards[0]?.card?.card?.info} />
+           <RestrauntMiniDetailCard cardOne = {menuList?.cards[2]?.card?.card?.info} />
         </div>
     </>
     )
