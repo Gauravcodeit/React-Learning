@@ -1,7 +1,7 @@
 import { restrauntMenuAPI } from "../Util/Constant";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Shimmer from "./ShimmerUI";
+import MenuPageShimmer from "./MenuPageShimmer";
 import RestrauntMiniDetailCard from "./RestrauntMiniDetailCard";
 import OfferDetail from "./OfferDetail";
 const RestrauntDetailPage =()=>{
@@ -19,14 +19,14 @@ const RestrauntDetailPage =()=>{
         const restaurantDetailJson = await restrauntDetail.json();
         const resDes= restaurantDetailJson.data?.cards[0]?.card?.card;
         const resOffer= restaurantDetailJson.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers;
-        console.log(resOffer);
+        console.log(restaurantDetailJson);
         setMenuOffer(resOffer);
         setMenuData(restaurantDetailJson?.data);
         setMenuDes(resDes);
 
     }
     if (menuData === null ){
-        return <Shimmer />
+        return <MenuPageShimmer />
     }
 
 
