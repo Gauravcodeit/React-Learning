@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./ShimmerUI";
 import RestrauntMiniDetailCard from "./RestrauntMiniDetailCard";
+import OfferDetail from "./OfferDetail";
 const RestrauntDetailPage =()=>{
     const {rstID} = useParams();
-    const [ menuList, setMenuList]= useState(null);
+    const [menuData, setMenuData] = useState(null);
+    const [ menuDes, setMenuDes]= useState(null);
+    const [ menuOffer, setMenuOffer]= useState(null);
     useEffect(()=>{
         fetchMenu();
     }, [])
@@ -14,22 +17,31 @@ const RestrauntDetailPage =()=>{
         const corsfreeApi = 'https://corsproxy.org/?' + encodeURIComponent(url);
         const restrauntDetail = await fetch(corsfreeApi);
         const restaurantDetailJson = await restrauntDetail.json();
-        console.log(restaurantDetailJson);
-        setMenuList(restaurantDetailJson.data);
-        console.log(menuList);
+        const resDes= restaurantDetailJson.data?.cards[0]?.card?.card;
+        const resOffer= restaurantDetailJson.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers;
+        console.log(resOffer);
+        setMenuOffer(resOffer);
+        setMenuData(restaurantDetailJson?.data);
+        setMenuDes(resDes);
+
     }
-    if (menuList === null ){
+    if (menuData === null ){
         return <Shimmer />
     }
-    // const { name, avgRatingString, cuisines, locality, feeDetails, totalRatingsString    } =
-    // menuList?.cards[0]?.card?.card?.info;
+
 
 
     return(
     <>
+    <div className="res-detailcontainer">
         <div className="rest-main-detail">
-           <RestrauntMiniDetailCard cardOne = {menuList?.cards[2]?.card?.card?.info} />
+            <RestrauntMiniDetailCard cardOne = {menuDes?.info} />
         </div>
+        <div className="offers-grp">
+           { menuOffer?.map((item)=> <OfferDetail offer={item} key={item?.info?.offerIds[0]} />)}
+        </div>
+    </div>
+
     </>
     )
 
