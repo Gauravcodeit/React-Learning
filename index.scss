@@ -18,7 +18,7 @@ body {
             cursor: pointer;
         }
         .header {
-            background: #f8f8f8;
+            background: #c62828;
             display: flex;
             padding: 20px 15px;
             justify-content: space-between;
@@ -39,6 +39,10 @@ body {
                 display: flex;
                 gap: 20px;
                 align-items: center;
+                a{
+                    color: #fff;
+                    text-decoration: none;
+                }
             }
         }
         .card-grp {
@@ -79,6 +83,7 @@ body {
     gap: 12px;
     margin-block: 20px;
 }
+
 .offer-card-wrap {
     border: 1px solid #e9e9eb;
     border-radius: 8px;
@@ -120,10 +125,49 @@ body {
         background-color: #ccc;
     }
 }
+.menu-page-shimmer-sub-desc {
+    height: 12px;
+    width: 300px;
+    margin-block: 10px;
+    border-radius: 4px;
+    background: #ccc;
+    margin: 10px auto;
+}
+.menu-page-shimmer-sub-img {
+    width: 59px;
+    height: 71px;
+    background: #ccc;
+    margin-block: 11px;
+    border-radius: 6px;
+}
+.menu-page-shimmer-offer {
+    height: 12px;
+    max-width: 600px;
+    width: 100%;
+    background: #ccc;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    opacity: 0.4;
+}
+.menu-page-shimmer-sub-desc-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.menu-page-shimmer-desc {
+    opacity: .4;
+    border-bottom: 1px dotted #ccc;
+    margin-block: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.menu-page-shimmer-container,
 .res-detailcontainer{
+    width: 100%;
     max-width: 800px;
     margin: 20px auto;
-    width: 100%;
+    min-height: 80vh;
 }
 .rest-main-detail{
 
