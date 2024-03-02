@@ -20,7 +20,7 @@ body {
         .header {
             background: #c62828;
             display: flex;
-            padding: 20px 15px;
+            padding: 20px 50px;
             justify-content: space-between;
             align-items: center;
             .logo {
@@ -30,6 +30,9 @@ body {
                     object-fit: contain;
                     display: block;
                     width: 100%;
+                }
+                a{
+                    text-decoration: none;
                 }
             }
             .unordered-list {
@@ -42,6 +45,8 @@ body {
                 a{
                     color: #fff;
                     text-decoration: none;
+                    font-size: 1.4rem;
+                    line-height: 2rem;
                 }
             }
         }
@@ -73,6 +78,21 @@ body {
             }
         }
     }
+}
+.header-logo-title {
+    font-family: Style Script, cursive;
+    font-style: normal;
+    font-weight: 400;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 50px;
+    transform: rotate(-15deg);
+    padding-block: 20px;
+}
+.header-logo-title{
+    font-family: "Style Script", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 .offers-grp::-webkit-scrollbar {
     display: none;
@@ -132,6 +152,36 @@ body {
     border-radius: 4px;
     background: #ccc;
     margin: 10px auto;
+}
+.top-pick-wrap{
+    margin-block: 30px;
+    display: flex;
+    overflow-x: scroll;
+    gap: 54px;
+    padding-bottom: 30px;
+    border-bottom: 8px solid #f1f1f6;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .top-pick-card img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        position: relative;
+        height: 100%;
+    }
+    .top-pick-card {
+        min-width: 407px;
+        height: 456px;
+    }
+
+}
+.top-pick-header{
+    font-weight: 500;
+    font-size: 2.1rem;
+    line-height: 2.8rem;
+    margin-block: 2.5rem 1rem;
+    color:#333;
 }
 .menu-page-shimmer-sub-img {
     width: 59px;
