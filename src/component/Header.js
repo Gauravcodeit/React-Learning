@@ -5,9 +5,17 @@ const  Header = ()=>{
         <div className="header">
             <div className="logo">
                <Link to={'/'} >
-               <img
-               src={ BrandLogo }
-               alt="logo" />
+                { true ?
+                    <div className="header-logo-title">
+                        Itsyourfoodhub
+                    </div>
+
+                    :
+                    <img
+                    src={ BrandLogo }
+                    alt="logo" />
+                }
+
                </Link>
             </div>
             <div className="nav-items">
