@@ -1,7 +1,11 @@
+import AboutUsCardClass from "./AboutUsCardClass"
 export const About = ()=>{
     return (
-        <div>
-            About Us
+        <div className="about-us-wrap">
+           <div className="container">
+                 About Us
+             <AboutUsCardClass />
+            </div>
         </div>
     )
 }
