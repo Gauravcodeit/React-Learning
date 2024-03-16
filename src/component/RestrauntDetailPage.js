@@ -16,7 +16,8 @@ const RestrauntDetailPage =()=>{
     }, [])
     async function fetchMenu(){
         const url = restrauntMenuAPI + rstID;
-        const corsfreeApi = 'https://corsproxy.org/?' + encodeURIComponent(url);
+        // const corsfreeApi = 'https://corsproxy.org/?' + encodeURIComponent(url);
+        const corsfreeApi = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(url)
         const restrauntDetail = await fetch(corsfreeApi);
         const restaurantDetailJson = await restrauntDetail.json();
         const baseStructure = restaurantDetailJson?.data;

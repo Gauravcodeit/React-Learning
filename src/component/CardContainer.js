@@ -15,7 +15,7 @@ const CardContainer = function (){
     }, [])
     async function fetchData(){
 
-        const url = 'https://corsproxy.org/?' + encodeURIComponent(swiggyTopRestrauntAPI);
+        const url = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(swiggyTopRestrauntAPI);
         const restaurants = await fetch(url) ;
         const restaurantJson = await restaurants.json();
         const topRestaurant = restaurantJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
