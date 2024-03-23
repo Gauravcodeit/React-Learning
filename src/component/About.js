@@ -4,19 +4,42 @@ import React from "react";
  class About extends React.Component{
     constructor(props){
         super(props)
+        this.state = {
+            userDetail : {
+                name: 'Dummy',
+                location: 'Default'
+            },
+            userRepos : []
+        }
+
         console.log("parent component Constructor")
     }
-    componentDidMount(){
-        console.log("parent component did mount")
+    async componentDidMount(){
+        const userDetail = await fetch('https://api.github.com/users/Gauravcodeit') ;
+        const userDetailJson = await userDetail.json();
+
+        const userRepos = await fetch(userDetailJson.repos_url)
+        const userReposJson = await userRepos.json();
+        //console.log(userReposJson)
+        this.setState({userDetail: userDetailJson, userRepos : userReposJson})
+        console.log("parent component did mount", this.state.userDetail);
+
     }
+    componentDidUpdate(){
+        console.log("parent component did  update");
+    }
+    componentWillUnmount(){
+        console.log("parent component Unmounting")
+    }
+
     render(){
-        console.log("parent component render")
+        console.log("parent component render", this.state.userDetail)
         return (
             <div className="about-us-wrap">
                <div className="container">
                      About Us
-                 <AboutUsCardClass newprop= {'Child 1'} />
-                 <AboutUsCardClass newprop= {'Child 2'} />
+                 <AboutUsCardClass newprop= {'Child 1'} userDetail = {this.state.userDetail}  userRepos ={this.state.userRepos} />
+                    { /* <AboutUsCardClass newprop= {'Child 2'} userDetail={this.state.userDetail} /> */}
                 </div>
             </div>
         )
