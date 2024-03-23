@@ -4,7 +4,7 @@ import ReactDOM  from "react-dom/client";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 import { Home } from "./component/Home";
-import { About } from "./component/About";
+import  About  from "./component/About";
 import { ErrorPage } from "./component/ErrorPage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestrauntDetailPage from "./component/RestrauntDetailPage";
