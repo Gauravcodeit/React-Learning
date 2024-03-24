@@ -5,17 +5,7 @@ const  Header = ()=>{
         <div className="header">
             <div className="logo">
                <Link to={'/'} >
-                { true ?
-                    <div className="header-logo-title">
-                        Itsyourfoodhub
-                    </div>
-
-                    :
-                    <img
-                    src={ BrandLogo }
-                    alt="logo" />
-                }
-
+                { true ? <div className="header-logo-title"> Itsyourfoodhub</div> : <img  src={ BrandLogo } alt="logo" />  }
                </Link>
             </div>
             <div className="nav-items">
@@ -24,10 +14,7 @@ const  Header = ()=>{
                        <Link to={'/'}> Home</Link>
                     </li>
                     <li>
-                    <Link to={'/about'}>
-                        About
-                    </Link>
-
+                        <Link to={'/about'}>About</Link>
                     </li>
                 </ul>
             </div>
