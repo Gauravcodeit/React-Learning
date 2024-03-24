@@ -2,36 +2,25 @@
 import Card from './Card';
 import Shimmer from './ShimmerUI';
 import { useEffect, useState } from 'react';
-import { swiggyTopRestrauntAPI } from '../Util/Constant';
+import useRestrauntList from '../Util/useRestrauntList';
 import { Link } from 'react-router-dom';
 const CardContainer = function (){
-    const [listRestaurant, setListRestaurant] = useState();
+    const listRestaurant = useRestrauntList()
     const [filteredRestaurant, setfilteredRestaurant] = useState();
     const [clickedFlag, setclickedFlag] =useState(true);
     const [inputValue, setinputValue] = useState("")
 
     useEffect(()=>{
-        fetchData()
-    }, [])
-    async function fetchData(){
+        setfilteredRestaurant(listRestaurant);
+    }, [listRestaurant])
 
-        const url = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(swiggyTopRestrauntAPI);
-        const restaurants = await fetch(url) ;
-        const restaurantJson = await restaurants.json();
-        const topRestaurant = restaurantJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        console.log(restaurantJson)
-        setListRestaurant(topRestaurant);
-        setfilteredRestaurant(topRestaurant);
-        console.log(filteredRestaurant)
-    }
     function topRated(){
-        setinputValue("")
-        clickedFlag ? setclickedFlag(false): setclickedFlag(true);
-        let FilteredRestaurant = listRestaurant.filter((res)=>{
+       setinputValue("")
+       clickedFlag ? setclickedFlag(false): setclickedFlag(true);
+       const FilteredRestaurant = listRestaurant.filter((res)=>{
             return (res.info.avgRating > 4.2)
         })
         setfilteredRestaurant(FilteredRestaurant)
-
     }
     function allRestaurant(){
         setinputValue("")
@@ -54,7 +43,6 @@ const CardContainer = function (){
 
     return (
         <>
-
         <div className='filter-sort '>
            <button className='top-rated-btn' type='button' onClick={ clickedFlag ? topRated : allRestaurant}>
                 { clickedFlag ? "Top Rated Restaurant" :"All Restaurant"}
@@ -78,13 +66,11 @@ const CardContainer = function (){
                             cuisines ={item?.info?.cuisines}
                         />
                         </Link>
-
                     )
                 })
             }
         </div>
         </>
-
     )
 }
 export default CardContainer

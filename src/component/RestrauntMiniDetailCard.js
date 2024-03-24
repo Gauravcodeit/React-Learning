@@ -10,13 +10,9 @@ const RestrauntMiniDetailCard = (props)=>{
                             {cardOne?.name}
                         </h1>
                         <div className="res-detail-cuisine">
-                        { cardOne?.cuisines.join(", ") }
+                            {cardOne?.cuisines.join(", ") }
                         </div>
-
-                        <div>
-                            {cardOne?.locality}
-                        </div>
-
+                        <div>{cardOne?.locality}</div>
                     </div>
                     <div className="res-detail-rating-card">
                         <div className="image-star-group">
@@ -27,7 +23,6 @@ const RestrauntMiniDetailCard = (props)=>{
                             {cardOne?.totalRatingsString}
                         </div>
                     </div>
-
                 </div>
                 <div className="res-detail-delvy-fee">
                     {cardOne?.feeDetails?.message}
