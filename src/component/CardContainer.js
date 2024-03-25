@@ -4,7 +4,9 @@ import Shimmer from './ShimmerUI';
 import { useEffect, useState } from 'react';
 import useRestrauntList from '../Util/useRestrauntList';
 import { Link } from 'react-router-dom';
+import useOnlineStatus from '../Util/useOnlineStatus';
 const CardContainer = function (){
+    const onlineStatusFlag = useOnlineStatus()
     const listRestaurant = useRestrauntList()
     const [filteredRestaurant, setfilteredRestaurant] = useState();
     const [clickedFlag, setclickedFlag] =useState(true);
@@ -32,6 +34,9 @@ const CardContainer = function (){
             return (res.info.name.toLowerCase().includes(inputValue.toLowerCase()))
         })
         setfilteredRestaurant(filteredList)
+    }
+    if (!onlineStatusFlag){
+        return (<h2>Currently, you are offline </h2>)
     }
     if (!listRestaurant?.length){
         return(

@@ -5,9 +5,14 @@ import RestrauntMiniDetailCard from "./RestrauntMiniDetailCard";
 import TopPickItem from "./TopPickItem";
 import OfferDetail from "./OfferDetail";
 import useRestrauntDetail from "../Util/useRestrauntDetail";
+import useOnlineStatus from "../Util/useOnlineStatus";
 const RestrauntDetailPage =()=>{
+    const onlineStatusFlag = useOnlineStatus()
     const {rstID} = useParams();
-    const [menuData, menuDes, menuOffer, topPickItem ] = useRestrauntDetail(rstID)
+    const [menuData, menuDes, menuOffer, topPickItem ] = useRestrauntDetail(rstID);
+    if (!onlineStatusFlag){
+        return (<h2>Currently, you are offline </h2>)
+    }
     if (menuData === null ){
         return <MenuPageShimmer />
     }
