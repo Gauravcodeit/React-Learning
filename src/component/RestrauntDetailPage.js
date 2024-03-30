@@ -6,10 +6,11 @@ import TopPickItem from "./TopPickItem";
 import OfferDetail from "./OfferDetail";
 import useRestrauntDetail from "../Util/useRestrauntDetail";
 import useOnlineStatus from "../Util/useOnlineStatus";
+import MenuList from "./MenuList";
 const RestrauntDetailPage =()=>{
     const onlineStatusFlag = useOnlineStatus()
     const {rstID} = useParams();
-    const [menuData, menuDes, menuOffer, topPickItem ] = useRestrauntDetail(rstID);
+    const [menuData, menuDes, menuOffer, topPickItem , categories] = useRestrauntDetail(rstID);
     if (!onlineStatusFlag){
         return (<h2>Currently, you are offline </h2>)
     }
@@ -26,10 +27,16 @@ const RestrauntDetailPage =()=>{
                 <div className="offers-grp">
                     { menuOffer?.map((item)=> <OfferDetail offer={item} key={item?.info?.offerIds[0]} />)}
                 </div>
-                <div className="top-pick-header">Top Pick</div>
-                <div className="top-pick-wrap">
-                    {topPickItem?.map((item)=><TopPickItem key={item?.bannerId} topItem={item} />) }
-                </div>
+                { topPickItem ?
+                        <>
+                            <div className="top-pick-header">Top Pick</div>
+                            <div className="top-pick-wrap">
+                                {topPickItem?.map((item)=><TopPickItem key={item?.bannerId} topItem={item} />) }
+                            </div>
+                        </>
+                    : <></>
+                    }
+                <MenuList categories={categories} />
             </div>
         </>
     )
