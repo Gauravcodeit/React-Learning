@@ -5,6 +5,7 @@ const useRestrauntDetail = (rstID) =>{
     const [ menuDes, setMenuDes]= useState(null);
     const [ menuOffer, setMenuOffer]= useState(null);
     const [ topPickItem, setTopPickItem] =useState(null);
+    const [ categories, setCategories] =useState(null);
     useEffect(()=>{
         fetchMenu();
     }, [])
@@ -15,10 +16,15 @@ const useRestrauntDetail = (rstID) =>{
         const restrauntDetail = await fetch(corsfreeApi);
         const restaurantDetailJson = await restrauntDetail.json();
         const baseStructure = restaurantDetailJson?.data;
-        const resDes= baseStructure?.cards[0]?.card?.card;
-        const resOffer= baseStructure?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers;
-        const toppickitem = baseStructure?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.carousel;
-        // console.log(restaurantDetailJson);
+        const resDes= baseStructure?.cards[2]?.card?.card;
+        const resOffer= baseStructure?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.offers;
+        const toppickitem = baseStructure?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.carousel;
+        const categories_var = baseStructure?.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards.filter((item)=> {
+            return  (item?.card?.card?.['@type'] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+        })
+        //console.log(categories_var)
+        setCategories(categories_var)
+        console.log(restaurantDetailJson);
         setMenuOffer(resOffer);
         setMenuData(baseStructure);
         setMenuDes(resDes);
@@ -26,6 +32,6 @@ const useRestrauntDetail = (rstID) =>{
         // console.log(topPickItem);
 
     }
-    return ([menuData, menuDes, menuOffer, topPickItem ])
+    return ([menuData, menuDes, menuOffer, topPickItem, categories ])
 }
 export default useRestrauntDetail;

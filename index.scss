@@ -283,3 +283,37 @@ body {
 .about-us-wrap {
     padding-block: 50px;
 }
+.menu-category{
+    margin-block: 30px;
+    &-heading {
+        width: 100%;
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        padding-right: 16px;
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+    // .cat-item-image {
+    //     width: 30%;
+    // }
+    // .cat-item-detail {
+    //     width: 70%;
+    // }
+    .category-item-detail {
+        display: flex;
+        gap: 50px;
+        margin-block: 10px;
+        padding-block: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .cat-item-image img {
+        width: 156px;
+        height: 144px;
+        border-radius: 11px;
+    }
+
+
+}
