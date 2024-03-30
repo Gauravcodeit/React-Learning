@@ -1,5 +1,5 @@
 
-import Card from './Card';
+import Card, {HigherOrderCard} from './Card';
 import Shimmer from './ShimmerUI';
 import { useEffect, useState } from 'react';
 import useRestrauntList from '../Util/useRestrauntList';
@@ -11,7 +11,7 @@ const CardContainer = function (){
     const [filteredRestaurant, setfilteredRestaurant] = useState();
     const [clickedFlag, setclickedFlag] =useState(true);
     const [inputValue, setinputValue] = useState("")
-
+    const HigherOrderComponent = HigherOrderCard(Card)
     useEffect(()=>{
         setfilteredRestaurant(listRestaurant);
     }, [listRestaurant])
@@ -62,16 +62,31 @@ const CardContainer = function (){
          <div className="card-grp">
             {
                 filteredRestaurant?.map((item, index)=>{
-                    return(
-                        <Link to={'restraunts/' + item?.info?.id} key={item?.info?.id}>
-                        <Card
-                            image_url={ item?.info?.cloudinaryImageId }
+                    if (item?.info?.avgRating < 4){
+                        return(
+                            <Link to={'restraunts/' + item?.info?.id} key={item?.info?.id}>
+                            <Card
+                                image_url={ item?.info?.cloudinaryImageId }
 
-                            title ={item?.info?.name}
-                            cuisines ={item?.info?.cuisines}
-                        />
+                                title ={item?.info?.name}
+                                cuisines ={item?.info?.cuisines}
+                            />
+                            </Link>
+                        )
+                    }
+
+                    else
+                    { return(
+                        <Link to={'restraunts/' + item?.info?.id} key={item?.info?.id}>
+                            <HigherOrderComponent
+                                image_url={ item?.info?.cloudinaryImageId }
+
+                                title ={item?.info?.name}
+                                cuisines ={item?.info?.cuisines}
+                            />
                         </Link>
                     )
+                    }
                 })
             }
         </div>

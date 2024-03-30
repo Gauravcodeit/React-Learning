@@ -16,6 +16,7 @@ const RestrauntDetailPage =()=>{
     if (menuData === null ){
         return <MenuPageShimmer />
     }
+
     return(
         <>
             <div className="res-detailcontainer">
@@ -23,14 +24,13 @@ const RestrauntDetailPage =()=>{
                     <RestrauntMiniDetailCard cardOne = {menuDes?.info} />
                 </div>
                 <div className="offers-grp">
-                { menuOffer?.map((item)=> <OfferDetail offer={item} key={item?.info?.offerIds[0]} />)}
+                    { menuOffer?.map((item)=> <OfferDetail offer={item} key={item?.info?.offerIds[0]} />)}
                 </div>
                 <div className="top-pick-header">Top Pick</div>
                 <div className="top-pick-wrap">
                     {topPickItem?.map((item)=><TopPickItem key={item?.bannerId} topItem={item} />) }
                 </div>
             </div>
-
         </>
     )
 

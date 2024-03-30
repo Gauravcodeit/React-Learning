@@ -16,4 +16,14 @@ const Card = (props) => {
         </div>
     )
 }
+export const HigherOrderCard = (Card)=>{
+    return (props)=>{
+        return(
+            <>
+            <label>Top Rated</label>
+            <Card { ...props} />
+            </>
+        )
+    }
+}
 export default Card

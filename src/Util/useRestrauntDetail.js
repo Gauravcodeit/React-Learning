@@ -15,10 +15,10 @@ const useRestrauntDetail = (rstID) =>{
         const restrauntDetail = await fetch(corsfreeApi);
         const restaurantDetailJson = await restrauntDetail.json();
         const baseStructure = restaurantDetailJson?.data;
-        const resDes= baseStructure?.cards[0]?.card?.card;
-        const resOffer= baseStructure?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers;
-        const toppickitem = baseStructure?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.carousel;
-        // console.log(restaurantDetailJson);
+        const resDes= baseStructure?.cards[2]?.card?.card;
+        const resOffer= baseStructure?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.offers;
+        const toppickitem = baseStructure?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.carousel;
+        console.log(restaurantDetailJson);
         setMenuOffer(resOffer);
         setMenuData(baseStructure);
         setMenuDes(resDes);
