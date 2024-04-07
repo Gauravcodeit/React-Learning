@@ -1,6 +1,5 @@
-import  React, {lazy, Suspense} from "react";
+import  React, {lazy, Suspense, useState} from "react";
 import ReactDOM  from "react-dom/client";
-
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 import { Home } from "./component/Home";
@@ -8,16 +7,20 @@ import  About  from "./component/About";
 import { ErrorPage } from "./component/ErrorPage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestrauntDetailPage from "./component/RestrauntDetailPage";
+import UserContext from "./Util/UserContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const Grocery = lazy(()=> import("./component/Grocery"))
 const AppLayout = ()=>{
-
+    const [userName, setUserName] = useState('gaurav adhikari')
     return (
         <div className="app-layout">
-            <Header />
-                <Outlet />
-            <Footer />
+            <UserContext.Provider value={{loggedInUser:userName,setUserName }}>
+                <Header />
+                    <Outlet />
+                <Footer />
+            </UserContext.Provider>
+
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import AboutUsCardClass from "./AboutUsCardClass";
 import React from "react";
 
+import UserContext from "../Util/UserContext";
+
  class About extends React.Component{
     constructor(props){
         super(props)
@@ -37,8 +39,12 @@ import React from "react";
         return (
             <div className="about-us-wrap">
                <div className="container">
-                     About Us
-                 <AboutUsCardClass newprop= {'Child 1'} userDetail = {this.state.userDetail}  userRepos ={this.state.userRepos} />
+
+                      Logged In User :
+                     <UserContext.Consumer>
+                      {({loggedInUser})=> <div>{loggedInUser}</div>}
+                     </UserContext.Consumer>
+                    <AboutUsCardClass newprop= {'Child 1'} key="about-us-1" userDetail = {this.state.userDetail}  userRepos ={this.state.userRepos} />
                     { /* <AboutUsCardClass newprop= {'Child 2'} userDetail={this.state.userDetail} /> */}
                 </div>
             </div>

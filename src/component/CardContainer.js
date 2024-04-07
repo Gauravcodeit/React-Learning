@@ -1,11 +1,13 @@
 
 import Card, {HigherOrderCard} from './Card';
 import Shimmer from './ShimmerUI';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useRestrauntList from '../Util/useRestrauntList';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../Util/useOnlineStatus';
+import UserContext from '../Util/UserContext';
 const CardContainer = function (){
+    const {loggedInUser, setUserName} = useContext(UserContext) ;
     const onlineStatusFlag = useOnlineStatus()
     const listRestaurant = useRestrauntList()
     const [filteredRestaurant, setfilteredRestaurant] = useState();
@@ -57,6 +59,12 @@ const CardContainer = function (){
                 <button type='button' onClick={SearchedList}>
                     Search
                 </button>
+            </div>
+            <div className='user-addition'>
+                <label>
+                    Logged In User
+                </label>
+                <input type='text' maxLength={15} value={loggedInUser} onChange={(e)=> setUserName(e.target.value)}/>
             </div>
         </div>
          <div className="card-grp">

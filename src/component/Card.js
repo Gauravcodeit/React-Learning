@@ -1,5 +1,10 @@
+
+import { useContext } from "react";
+import UserContext from "../Util/UserContext";
+
 const Card = (props) => {
-    const { image_url, title, cuisines } = props
+    const  {loggedInUser} = useContext(UserContext);
+    const { image_url, title, cuisines } = props;
     return (
         <div className="card-wrap">
             <div className="card-img-wrap">
@@ -12,6 +17,7 @@ const Card = (props) => {
                 <div className="card-cuisines">
                     { cuisines.join(',  ') }
                 </div>
+                <div> User :{loggedInUser}</div>
             </div>
         </div>
     )
