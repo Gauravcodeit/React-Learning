@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { BrandLogo } from "../Util/Constant";
+import { useContext } from "react";
+import UserContext from "../Util/UserContext";
 const  Header = ()=>{
+    const {loggedInUser}= useContext(UserContext)
     return (
         <div className="header">
             <div className="logo">
@@ -18,6 +21,9 @@ const  Header = ()=>{
                     </li>
                     <li>
                         <Link to={'/grocery'}>Grocery</Link>
+                    </li>
+                    <li>
+                        User : {loggedInUser}
                     </li>
                 </ul>
             </div>

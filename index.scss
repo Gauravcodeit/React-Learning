@@ -305,6 +305,7 @@ body {
     .category-item-detail {
         display: flex;
         gap: 50px;
+        justify-content: space-between;
         margin-block: 10px;
         padding-block: 15px;
         border-bottom: 1px solid #eee;
@@ -316,4 +317,19 @@ body {
     }
 
 
+}
+
+@media screen and (max-width: 991px) {
+    body
+    {
+        .app-layout
+        {
+            .header{
+                padding: 20px;
+            }
+            .header-logo-title {
+                font-size: 28px;
+            }
+        }
+    }
 }
