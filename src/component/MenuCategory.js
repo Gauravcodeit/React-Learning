@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { meuItemImageBaseUrl } from "../Util/Constant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../Util/cartSlice";
 const MenuCategory = (props)=>{
     const {category, calltheparent, toshowDetail} = props;
     const title = category?.card?.card?.title;
@@ -7,6 +9,10 @@ const MenuCategory = (props)=>{
     const handleClick=()=>{
 
         calltheparent(toshowDetail)
+    }
+    const dispatch = useDispatch();
+    const handleAddToCart =()=>{
+        dispatch(addItem("orange"));
     }
     return (
 
@@ -29,7 +35,9 @@ const MenuCategory = (props)=>{
                             </div>
                             <div className="cat-item-image">
                                 <img src={meuItemImageBaseUrl + menuItem?.imageId } />
+                                <button type="button" className="add-to-cart" onClick={handleAddToCart} >Add</button>
                             </div>
+
                         </div>
                         )
                     })
