@@ -26,7 +26,7 @@ const  Header = ()=>{
                         <Link to={'/grocery'}>Grocery</Link>
                     </li>
                     <li>
-                       <Link >Cart {cartItems.length}</Link>
+                       <Link to={'/cart'} >Cart {cartItems.length}</Link>
                     </li>
                     <li>
                         User : {loggedInUser}

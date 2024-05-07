@@ -12,6 +12,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 import { Provider } from "react-redux";
 import appStore from "./Util/AppStore";
 
+import CartPage from "./component/CartPage";
+
 const Grocery = lazy(()=> import("./component/Grocery"))
 const AppLayout = ()=>{
 
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: 'grocery',
                 element: <Suspense fallback={<div>Loading</div>} ><Grocery /></Suspense>
+            },
+            {
+                path: '/cart',
+                element : <CartPage />
             }
         ]
     },
