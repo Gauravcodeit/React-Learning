@@ -9,19 +9,25 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestrauntDetailPage from "./component/RestrauntDetailPage";
 import UserContext from "./Util/UserContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+import { Provider } from "react-redux";
+import appStore from "./Util/AppStore";
+
+import CartPage from "./component/CartPage";
 
 const Grocery = lazy(()=> import("./component/Grocery"))
 const AppLayout = ()=>{
+
     const [userName, setUserName] = useState('gaurav adhikari')
     return (
-        <div className="app-layout">
-            <UserContext.Provider value={{loggedInUser:userName,setUserName }}>
-                <Header />
-                    <Outlet />
-                <Footer />
-            </UserContext.Provider>
-
-        </div>
+        <Provider store={appStore} >
+            <div className="app-layout">
+                <UserContext.Provider value={{loggedInUser:userName,setUserName }}>
+                    <Header />
+                        <Outlet />
+                    <Footer />
+                </UserContext.Provider>
+            </div>
+        </Provider>
     )
 }
 const router = createBrowserRouter([
@@ -45,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: 'grocery',
                 element: <Suspense fallback={<div>Loading</div>} ><Grocery /></Suspense>
+            },
+            {
+                path: '/cart',
+                element : <CartPage />
             }
         ]
     },

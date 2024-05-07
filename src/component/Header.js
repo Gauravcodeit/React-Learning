@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { BrandLogo } from "../Util/Constant";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 import UserContext from "../Util/UserContext";
 const  Header = ()=>{
+    const cartItems = useSelector((store)=> store.cart.items )
+    console.log(cartItems)
     const {loggedInUser}= useContext(UserContext)
     return (
         <div className="header">
@@ -21,6 +24,9 @@ const  Header = ()=>{
                     </li>
                     <li>
                         <Link to={'/grocery'}>Grocery</Link>
+                    </li>
+                    <li>
+                       <Link to={'/cart'} >Cart {cartItems.length}</Link>
                     </li>
                     <li>
                         User : {loggedInUser}
