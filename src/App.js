@@ -11,22 +11,27 @@ import UserContext from "./Util/UserContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 import { Provider } from "react-redux";
 import appStore from "./Util/AppStore";
-
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 import CartPage from "./component/CartPage";
 
-const Grocery = lazy(()=> import("./component/Grocery"))
+let persistor = persistStore(appStore);
+const Grocery = lazy(()=> import("./component/Grocery"));
 const AppLayout = ()=>{
 
     const [userName, setUserName] = useState('gaurav adhikari')
     return (
         <Provider store={appStore} >
-            <div className="app-layout">
-                <UserContext.Provider value={{loggedInUser:userName,setUserName }}>
-                    <Header />
-                        <Outlet />
-                    <Footer />
-                </UserContext.Provider>
-            </div>
+            <PersistGate persistor={persistor} >
+                <div className="app-layout">
+                    <UserContext.Provider value={{loggedInUser:userName,setUserName }}>
+                        <Header />
+                            <Outlet />
+                        <Footer />
+                    </UserContext.Provider>
+                </div>
+            </PersistGate>
+
         </Provider>
     )
 }
