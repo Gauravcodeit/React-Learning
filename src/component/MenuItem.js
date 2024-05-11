@@ -13,10 +13,10 @@ const MenuItem =(props)=>{
     return (
         <div className="menu-category-detail">
                     {
-                    item?.map((c) => {
+                    item?.map((c, index) => {
                         const menuItem = c?.card?.info;
                         return(
-                        <div key={menuItem.id} className="category-item-detail">
+                        <div key={props.keyprefix ? props.keyprefix + menuItem.id + index : menuItem.id + index} className="category-item-detail">
                             <div className="cat-item-detail">
                             <div>{menuItem?.name}</div>
                             <div>{menuItem?.description}</div>
