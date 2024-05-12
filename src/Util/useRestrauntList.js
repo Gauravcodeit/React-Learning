@@ -8,7 +8,9 @@ const useRestrauntList = () =>{
     }, [])
     async function fetchData(){
 
-        const url = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(swiggyTopRestrauntAPI);
+        // const url = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(swiggyTopRestrauntAPI);
+        const url = 'https://web-server-4z34.onrender.com/api/restaurants?lat=28.630251&lng=77.3463139';
+
         const restaurants = await fetch(url) ;
         const restaurantJson = await restaurants.json();
         const topRestaurant = restaurantJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;

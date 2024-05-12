@@ -6,7 +6,7 @@ const CartPage = ()=>{
     return(
         <>
          <div className="menu-category">
-         <MenuItem item={items} />
+         <MenuItem item={items} keyprefix={"cart"} />
          </div>
 
         </>
