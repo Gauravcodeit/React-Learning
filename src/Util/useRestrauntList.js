@@ -8,8 +8,8 @@ const useRestrauntList = () =>{
     }, [])
     async function fetchData(){
 
-        // const url = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(swiggyTopRestrauntAPI);
-        const url = 'https://itsyourfoodapp-backend.onrender.com/api/restaurants?lat=28.630251&lng=77.3463139';
+        const url = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(swiggyTopRestrauntAPI);
+        //const url = 'https://itsyourfoodapp-backend.onrender.com/api/restaurants?lat=28.630251&lng=77.3463139';
 
         const restaurants = await fetch(url) ;
         const restaurantJson = await restaurants.json();

@@ -10,10 +10,10 @@ const useRestrauntDetail = (rstID) =>{
         fetchMenu();
     }, [])
     async function fetchMenu(){
-        //const url = restrauntMenuAPI + rstID;
+        const url = restrauntMenuAPI + rstID;
         // const corsfreeApi = 'https://corsproxy.org/?' + encodeURIComponent(url);
-        // const corsfreeApi = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(url);
-        const corsfreeApi = 'https://itsyourfoodapp-backend.onrender.com/api/menu?lat=28.630251&lng=77.3463139&restaurantId=' + rstID;
+         const corsfreeApi = 'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent(url);
+        //const corsfreeApi = 'https://itsyourfoodapp-backend.onrender.com/api/menu?lat=28.630251&lng=77.3463139&restaurantId=' + rstID;
 
         const restrauntDetail = await fetch(corsfreeApi);
         const restaurantDetailJson = await restrauntDetail.json();
